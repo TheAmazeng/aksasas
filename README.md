@@ -37,3 +37,5 @@ https://docs.mitmproxy.org/stable/concepts-certificates/
 2. **Check the console output**:
    - Any potential reflections will be reported in the console with details of the affected URL, parameter, and injected payload.
    - Connection errors will also be reported, indicating which domains may not be reachable.
+  
+[![Demo](https://raw.githubusercontent.com/oran0s/aksasas/main/demo.gif)]
