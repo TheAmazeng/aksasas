@@ -42,7 +42,7 @@ def request(flow: http.HTTPFlow) -> None:
     host = parsed_url.netloc
     
     # Only process requests if the host matches any of the specified substrings (whitelist)
-    if any(host.strip() == keyword.strip() for keyword in include_hosts):
+    if any(host.endswith(f".{keyword.strip()}") or host == keyword.strip() for keyword in include_hosts):
         threading.Thread(target=test_reflections, args=(flow,)).start()
 
 def test_reflections(flow):
@@ -83,7 +83,7 @@ def test_params(flow, params, method):
                     success = True
                 except requests.exceptions.ConnectionError as e:
                     retries -= 1
-                    time.sleep(3)
+                    time.sleep(1)
 
             if not success:
                 continue
@@ -96,7 +96,7 @@ def test_params(flow, params, method):
                     print(f"{RED}Injection: {RESET}{prefixed_injection}")
                     print(f"{YELLOW}--------------------------------------{RESET}")
 
-            time.sleep(1)
+            time.sleep(3)
 
 def is_whitelisted_reflection(response_text, prefixed_injection):
     # Ensure that the reflected character is exactly the same as what was injected
