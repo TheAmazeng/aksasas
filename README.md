@@ -1,7 +1,7 @@
 # aksasas
 
 
-XSS Scanner Made with 0ranos Fingers sweat
+XSS Scanner Made with Amazeng Fingers sweat
 
 ## Setup
 
